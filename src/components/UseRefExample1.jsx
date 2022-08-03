@@ -25,7 +25,8 @@ function UseRefExample1() {
                     className='form-control mb-2'
                 />
                 <button type="submit" className='btn btn-primary'>Submit</button>
-                <p ref={paraRef}>Helllo</p>
+                {/* clicking on paragraph moves the input into a focus state (with cursor) */}
+                <p onClick={() => inputRef.current.focus()} ref={paraRef}>Hello</p> 
             </form>
         </div>
     )
