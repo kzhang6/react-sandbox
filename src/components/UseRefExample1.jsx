@@ -5,9 +5,16 @@ import {useRef} from 'react'
 function UseRefExample1() {
     const inputRef = useRef()
 
+    const onSubmit = (e) => {
+        e.preventDefault()
+        console.log(inputRef.current.value)             //inputRef is a DOM element
+        inputRef.current.value = 'Hello'                //set value of the input
+        inputRef.current.style.backgroundColor = 'red'
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="name">Name</label>
                 <input 
                     type='text'
