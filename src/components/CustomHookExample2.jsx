@@ -3,10 +3,25 @@ import React from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 function CustomHookExample2() {
-  const [task, setTask] = useLocalStorage('task', '')
-  
+//   const [task, setTask] = useState('')
+//   change to useLocalStorage instead
+const [task, setTask] = useLocalStorage('task', '')
+const [tasks, setTasks] = useLocalStorage('task', [])
+
+const onSubmit = (e) => {
+    e.preventDefault()
+
+    const taskObj = {
+        task,   //task: task
+        completed: false,
+        date: new Date().toLocaleDateString(),
+    }
+
+    setTasks([...tasks, taskObj])
+}
+
     return (
-    <form className='w-50'>
+    <form onSubmit={onSubmit} className='w-50'>
         <div className='mb-3'>
             <label className='form-label'>Task</label>
             <input 
@@ -16,6 +31,9 @@ function CustomHookExample2() {
                 onChange={(e) => setTask(e.target.value)}
             />
         </div>
+        <button type="submit" className='btn btn-primary'>
+            Submit
+        </button>
     </form>
   )
 }

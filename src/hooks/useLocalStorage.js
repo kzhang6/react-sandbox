@@ -5,7 +5,7 @@ function useLocalStorage(key, initialValue) {
     const [localStorageValue, setLocalStorageValue] = useState(() => getLocalStorageValue(key, initialValue))
 
     const setValue = (value) => {
-        //check if value is a function
+        //check if value is a function (can pass in either function or value when calling setValue)
         const valueToStore = value instanceof Function ? value(localStorageValue) : value
         //set to state
         setLocalStorageValue(value)
