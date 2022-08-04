@@ -2,12 +2,19 @@ import React from 'react'
 import useFetch from '../hooks/useFetch'
 
 function CurstomHookExample1() {
-    const res = useFetch('https://jsonplaceholder.typicode.com/posts', {})
+    const{data, loading} = useFetch('https://jsonplaceholder.typicode.com/posts', {})
 
-    console.log(res)
+    // console.log(res)
+    if (loading) {
+        return <h3>Loading...</h3>
+    }
 
   return (
-    <div>CurstomHookExample1</div>
+    <div>
+        {data.map(post => (
+            <h3 key={post.id}>{post.title}</h3>
+        ))}
+    </div>
   )
 }
 
