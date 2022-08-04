@@ -21,6 +21,7 @@ const onSubmit = (e) => {
 }
 
     return (
+        <>
     <form onSubmit={onSubmit} className='w-50'>
         <div className='mb-3'>
             <label className='form-label'>Task</label>
@@ -35,6 +36,14 @@ const onSubmit = (e) => {
             Submit
         </button>
     </form>
+
+    <hr />
+    {/* outputting localstorage */}
+    {tasks.map((task) => (
+        <h3 key={task.date}> {task.task}</h3>
+    ))}
+
+    </>
   )
 }
 
