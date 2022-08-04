@@ -6,7 +6,10 @@ function UseMemoExample() {
     const [number, setNumber] = useState(1)
     const[inc, setInc] = useState(0)
 
-    const sqrt = getSqrt(number)
+    // const sqrt = getSqrt(number)
+
+    /* result from getSqrt is memoized when the input (number) isn't changing */
+    const sqrt = useMemo(() => getSqrt(number), [number])
 
     const renders = useRef(1)
 
@@ -38,7 +41,7 @@ function UseMemoExample() {
             onClick={onClick} 
             className="btn btn-primary"
         >
-            Re Render</button>  {/* rerenders and increase setInc by 1 */}
+            Re Render</button>  {/* rerenders and increase setInc by 1, but also goes through the getSqrt function? */}
         <h3>Renders: {renders.current}</h3>
     </div>
   )
