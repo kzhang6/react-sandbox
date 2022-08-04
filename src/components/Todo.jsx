@@ -12,16 +12,18 @@ function Todo() {
         .then((res) => res.json())
         .then((data => {
             setTimeout(() => {
-                setTodo(data)
-                setLoading(false)
+                if (isMounted.current) {
+                    setTodo(data)
+                    setLoading(false)
+                }
             }, 3000)
         }))
 
         //runs when component is unmounted
         return () => {
-            console.log(123)
+            isMounted.current = false
         }
-    }, [])
+    }, [isMounted])
   
     return loading? <h3>Loading...</h3> : <h1>{todo.title}</h1>
 }
