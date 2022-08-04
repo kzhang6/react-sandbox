@@ -4,9 +4,9 @@ import {useState, useCallback} from 'react'
 function UseCallbackExample() {
     const [tasks, setTasks] = useState([])
 
-    const addTask = () => {
+    const addTask = useCallback(() => {
         setTasks((prevState) => [...prevState, 'Some Task'])
-    }
+    }, [setTasks])
 
   return (
     <div>
@@ -18,7 +18,7 @@ function UseCallbackExample() {
   )
 }
 
-const Button = ({addTask}) => {
+const Button = React.memo(({addTask}) => {
     console.log('Button rendered');
     return <div>
         <button 
@@ -27,6 +27,6 @@ const Button = ({addTask}) => {
         >
             Add Task</button>
     </div>
-}
+})
 
 export default UseCallbackExample
