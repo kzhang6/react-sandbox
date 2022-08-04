@@ -1,9 +1,9 @@
-import UseCallbackExample from "./components/UseCallbackExample";
+import CurstomHookExample1 from "./components/CurstomHookExample1";
 
 function App() {
   return (
     <div className="container mt-5">
-      <UseCallbackExample />
+      <CurstomHookExample1 />
     </div>
   );
 }
